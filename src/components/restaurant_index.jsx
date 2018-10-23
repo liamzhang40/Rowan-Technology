@@ -22,6 +22,12 @@ class RestaurantIndex extends React.Component {
         };
     }
 
+    componentWillReceiveProps(nextProps, nextState) {
+        if (nextProps.city !== this.props.city) {
+            this.offset = 0;
+        }
+    }
+
     handleClick(pageNumber) {
         return () => {
             this.offset = (pageNumber - 1) * 20;  
