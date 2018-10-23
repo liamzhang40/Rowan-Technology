@@ -7,6 +7,7 @@ class Main extends React.Component {
         super();
 
         this.state = {
+            city: null,
             restaurants: null
         };
     }
@@ -14,8 +15,12 @@ class Main extends React.Component {
     render() {
         return (
             <div className="background">
-                <CityInput setParentState={ restaurants => this.setState({ restaurants })} />
-                <RestaurantIndex restaurants={this.state.restaurants} />
+                <CityInput 
+                    setParentState={ (restaurants, city) => this.setState({ restaurants, city })} />
+                <RestaurantIndex 
+                    city={this.state.city}
+                    restaurants={this.state.restaurants} 
+                    setParentState={restaurants => this.setState({ restaurants })} />
             </div>
         );
     }

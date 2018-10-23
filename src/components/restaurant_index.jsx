@@ -1,5 +1,6 @@
 import React from 'react';
 import RestaurantIndexItem from './restaurant_index_item';
+import { fetchRestaurants } from '../utils/yelp_api_util';
 
 class RestaurantIndex extends React.Component {
     constructor() {
@@ -9,6 +10,7 @@ class RestaurantIndex extends React.Component {
             sortby: "",
             order: ""
         };
+        this.offset = 0;
     }
 
     update(category) {
@@ -20,11 +22,22 @@ class RestaurantIndex extends React.Component {
         };
     }
 
+    handleClick(pageNumber) {
+        return () => {
+            this.offset = (pageNumber - 1) * 20;  
+            fetchRestaurants(this.props.city, this.offset).then( response => {
+                this.props.setParentState(response.businesses);
+            });
+        };
+    } 
+
     render() {
         const { restaurants } = this.props;
         const radio = ["price", "rating"].map((category, idx) => (
             <li key={idx}>
-                {`sort by ${category}:`}
+                <span className="sort-titles">
+                    {`sort by ${category}:`}
+                </span>
                 {["low to high", "high to low"].map((order, idx2) => (
                     <label key={idx2}>{order}
                         <input
@@ -39,7 +52,13 @@ class RestaurantIndex extends React.Component {
 
         if (this.state.order === "low to high") {
             restaurants.sort((a, b) => {
-                if (typeof a[this.state.sortby] === "number") {
+                if (a[this.state.sortby] === undefined && b[this.state.sortby] === undefined) {
+                    return 0;
+                } else if (a[this.state.sortby] === undefined) {
+                    return -1;
+                } else if (b[this.state.sortby] === undefined) {
+                    return 1;
+                } else if (typeof a[this.state.sortby] === "number") {
                     return a[this.state.sortby] - b[this.state.sortby];
                 } else if (typeof a[this.state.sortby] === "string") {
                     return a[this.state.sortby].length - b[this.state.sortby].length;                
@@ -47,7 +66,13 @@ class RestaurantIndex extends React.Component {
             });
         } else if (this.state.order === "high to low") {
             restaurants.sort((a, b) => {
-                if (typeof a[this.state.sortby] === "number") {
+                if (a[this.state.sortby] === undefined && b[this.state.sortby] === undefined) {
+                    return 0;
+                } else if (a[this.state.sortby] === undefined) {
+                    return 1;
+                } else if (b[this.state.sortby] === undefined) {
+                    return -1;
+                } else if (typeof a[this.state.sortby] === "number") {
                     return b[this.state.sortby] - a[this.state.sortby];
                 } else if (typeof a[this.state.sortby] === "string") {
                     return b[this.state.sortby].length - a[this.state.sortby].length;
@@ -61,7 +86,15 @@ class RestaurantIndex extends React.Component {
                 restaurant={restaurant}/>
         )) :
         [];
-        
+    
+        const page = new Array(10).fill().map((el, idx) => (
+            <li 
+                key={idx} 
+                onClick={this.handleClick(idx + 1)}
+                className={this.offset / 20 === idx ? "selected-page" : ""}>
+                <span>{idx + 1}</span>
+            </li>
+        ));
 
         return (
             <div className="restaurant-container">
@@ -70,9 +103,17 @@ class RestaurantIndex extends React.Component {
                         {radio}
                     </ul>
                 }
-                <ul>
+                <ul className="restaurant-index">
                     {list}
                 </ul>
+                { restaurants &&
+                    <div className="page-bottom">
+                        <span>Pages:</span>
+                        <ul className="page-numbers">
+                            {page}
+                        </ul>
+                    </div>
+                }
             </div>
         );
     }

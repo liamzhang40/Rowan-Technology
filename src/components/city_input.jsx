@@ -19,8 +19,8 @@ class CityInput extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        fetchRestaurants(this.state.city).then(response => {
-            this.props.setParentState(response.businesses);
+        fetchRestaurants(this.state.city, 0).then(response => {
+            this.props.setParentState(response.businesses, this.state.city);
         });
     }
 

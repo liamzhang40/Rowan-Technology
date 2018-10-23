@@ -48,7 +48,10 @@ button:hover {
 ul {
     list-style: none;
     padding-left: 0;
-    width: 100%;
+}
+
+.restaurant-index {
+    width: 100%;;
 }
 
 .restaurant-index-item {
@@ -103,4 +106,40 @@ a:visited {
 
 .sort-options>li>label {
     margin-left: 10px;
+}
+
+.sort-titles {
+    display: inline-block;
+    width: 100px;
+}
+
+.page-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-numbers {
+    display: flex;
+    margin: 0;
+}
+
+.page-numbers li {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    background-color: #e6e6e6;
+    color: #fff;
+    cursor: pointer;
+}
+
+.page-numbers li:hover {
+    background-color: grey;
+}
+
+.page-numbers .selected-page,
+.page-numbers .selected-page:hover {
+    background-color: #d32323;
 }
