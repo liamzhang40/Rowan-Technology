@@ -37,14 +37,23 @@ class RestaurantIndex extends React.Component {
             </li>
         ));
 
-        if (restaurants) {
-            restaurants.sort((a, b) => a.rating > b.rating);
+        if (this.state.order === "low to high") {
+            restaurants.sort((a, b) => {
+                if (typeof a[this.state.sortby] === "number") {
+                    return a[this.state.sortby] - b[this.state.sortby];
+                } else if (typeof a[this.state.sortby] === "string") {
+                    return a[this.state.sortby].length - b[this.state.sortby].length;                
+                }
+            });
+        } else if (this.state.order === "high to low") {
+            restaurants.sort((a, b) => {
+                if (typeof a[this.state.sortby] === "number") {
+                    return b[this.state.sortby] - a[this.state.sortby];
+                } else if (typeof a[this.state.sortby] === "string") {
+                    return b[this.state.sortby].length - a[this.state.sortby].length;
+                }
+            });
         }
-        // if (this.state.order === "low to high") {
-        //     restaurants.sort((a, b) => a[this.state.sortby] < b[this.state.sortby]);
-        // } else if (this.state.order === "high to low") {
-        //     restaurants.sort((a, b) => a[this.state.sortby] > b[this.state.sortby]);
-        // }
 
         const list = restaurants ? restaurants.map((restaurant, idx) => (
             <RestaurantIndexItem 
