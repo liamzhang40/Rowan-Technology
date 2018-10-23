@@ -1,0 +1,106 @@
+.background {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    background-color: #d32323;
+    padding: 15px 30px;
+    border-radius: 4px;
+}
+
+.city-search-label {
+    font-size: 16px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 4px 0 0 4px;
+}
+
+.city-search {
+    font-size: 16px;
+    border: none;
+    margin-left: 10px;
+    outline: none;
+    height: 100%;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.search {
+    height: 40px;
+    border-radius: 0 4px 4px 0;
+    border: none;
+    outline: none;
+}
+
+.restaurant-container {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+}
+
+.restaurant-index-item {
+    border-top: 1px solid #e6e6e6;
+}
+
+.restaurant-index-item:last-child {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.restaurant-index-item>div {
+    height: 200px;
+    padding: 17px 0;
+    display: flex;
+}
+
+.img-container {
+    height: 100%;
+    width: 200px;
+    overflow: hidden;
+}
+
+img {
+    max-height: 100%;
+}
+
+.detail-container {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #0000EE;
+}
+
+.sort-options {
+    width: 100%;
+}
+
+.sort-options>li {
+    margin: 17px 0;
+}
+
+.sort-options>li>label {
+    margin-left: 10px;
+}

@@ -7,7 +7,7 @@ export const fetchRestaurants = city => (
         },
         method: "GET",
         dataType: "json",
-        url: `https://cors-escape.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city}`,
+        url: `https://cors-escape.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city}&term=restaurants`,
         success: res => console.log(res)
     })
 );

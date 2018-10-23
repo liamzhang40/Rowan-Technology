@@ -1,24 +1,21 @@
 import React from 'react';
-import { fetchRestaurants } from '../utils/yelp_api_util';
 import CityInput from './city_input';
+import RestaurantIndex from './restaurant_index';
 
 class Main extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            city: ""
+            restaurants: null
         };
-    }
-
-    componentDidMount() {
-        fetchRestaurants("New York");
     }
 
     render() {
         return (
-            <div>
-                <CityInput setParentState={ city => this.setState({ city })} />
+            <div className="background">
+                <CityInput setParentState={ restaurants => this.setState({ restaurants })} />
+                <RestaurantIndex restaurants={this.state.restaurants} />
             </div>
         );
     }
