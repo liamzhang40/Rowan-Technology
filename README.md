@@ -6,5 +6,14 @@
 * React.js
 * HTML5 + CSS3
 
-### Download
-You can do git clone or download.
+### local setup
+git clone or download.
+
+In your command line
+
+```sh
+# install npm packages
+npm install
+
+# if you would like to make changes
+npm start
