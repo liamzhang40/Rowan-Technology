@@ -12,8 +12,8 @@ git clone or download.
 In your command line
 
 ```sh
-# install npm packages
+# Install npm packages
 npm install
 
-# if you would like to make changes
+# To start webpack and make changes to bundle.js
 npm start
