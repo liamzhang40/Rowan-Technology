@@ -6,7 +6,7 @@
 * React.js
 * HTML5 + CSS3
 
-### local setup
+### Local setup
 git clone or download.
 
 In your command line
