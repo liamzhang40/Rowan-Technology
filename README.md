@@ -6,5 +6,18 @@
 * React.js
 * HTML5 + CSS3
 
-### Download
-You can do git clone or download.
+### Local setup
+git clone or download.
+
+In your command line
+
+```sh
+# cd into the root directory of the project
+# Install npm packages
+npm install
+
+# To start webpack and make changes to bundle.js
+npm start
+
+# To see the project, simply open index.html from the project folder or
+open index.html
