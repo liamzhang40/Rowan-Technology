@@ -32175,7 +32175,7 @@ var fetchRestaurants = exports.fetchRestaurants = function fetchRestaurants(city
         },
         method: "GET",
         dataType: "json",
-        url: "http://localhost:8000/https://api.yelp.com/v3/businesses/search?location=" + city + "&term=restaurants&limit=20&offset=" + offset,
+        url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + city + "&term=restaurants&limit=20&offset=" + offset,
         success: function success(res) {
             return console.log(res);
         }
