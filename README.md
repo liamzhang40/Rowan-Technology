@@ -19,5 +19,9 @@ npm install
 # To start webpack and make changes to bundle.js
 npm start
 
-# To see the project, simply open index.html from the project folder or
+# Because the public proxy cors-anywhere is down right now. 
+# localhost the proxy first 
+node cors 
+
+# then open index.html
 open index.html
